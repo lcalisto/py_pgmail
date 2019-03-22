@@ -54,7 +54,7 @@ select py_pgmail(
 	'Text message! This is an email sent from a database!',
 	'',
 	'attachment.csv',
-	'/foo/bar/'
+	'/foo/bar/',
     	'smtp.gmail.com:587');
 ```
 Make sure you replace ```<USERNAME>``` ```<PASSWORD>``` and ```<MAIL.MYSERVER.COM:PORT>``` by the your email server config values.
