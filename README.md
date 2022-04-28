@@ -11,7 +11,7 @@ In order to use this function please run the folowing steps:
 2. After the function is created you can simply call the function as:
 
 ```sql 
-select py_pgmail('sentFromEmail',array['destination emails'],array['cc'],array['bcc'],'Subject','<USERNAME>','<PASSWORD>','Text message','HTML message','<MAIL.MYSERVER.COM:PORT>')
+select py_pgmail('sentFromEmail',array['destination emails'],array['cc'],array['bcc'],'Subject','<USERNAME>','<PASSWORD>','Text message','HTML message','attachment.csv','/foo/bar/','<MAIL.MYSERVER.COM:PORT>')
 ```
 WARNING: You can send a message in __plain text__ or in __HTML__. _If you provide both plain text and HTML then only the HTML will be sent!_
 
@@ -36,6 +36,8 @@ select py_pgmail(
 		<p>html message! This is an email sent from a database!</p>
 		</body>
 		</html>',
+	'attachment.csv',
+	'/foo/bar/',
 	'smtp.gmail.com:587');
     
 -------------------------   
@@ -51,6 +53,8 @@ select py_pgmail(
 	'<PASSWORD>',
 	'Text message! This is an email sent from a database!',
 	'',
+	'attachment.csv',
+	'/foo/bar/',
     	'smtp.gmail.com:587');
 ```
 Make sure you replace ```<USERNAME>``` ```<PASSWORD>``` and ```<MAIL.MYSERVER.COM:PORT>``` by the your email server config values.
