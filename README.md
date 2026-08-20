@@ -4,11 +4,17 @@
 
 This is a simple function in plpython3u (Python3) that sends an email from inside a PostgreSQL database.
 
-In order to use this function please run the folowing steps:
+In order to use this function please run the following steps:
 
-1. Create __py_pgmail__ function by running [py_pgmail.sql](https://github.com/lcalisto/py_pgmail/blob/master/py_pgmail.sql)
+1. Make sure the [plpython3u](https://www.postgresql.org/docs/current/plpython.html) extension is available in your database. If needed, enable it with:
 
-2. After the function is created you can simply call the function as:
+    ```sql
+    CREATE EXTENSION plpython3u;
+    ```
+
+2. Create __py_pgmail__ function by running [py_pgmail.sql](https://github.com/lcalisto/py_pgmail/blob/master/py_pgmail.sql)
+
+3. After the function is created you can simply call the function as:
 
 ```sql 
 select py_pgmail('sentFromEmail',array['destination emails'],array['cc'],array['bcc'],'Subject','<USERNAME>','<PASSWORD>','Text message','HTML message','attachment.csv','/foo/bar/','<MAIL.MYSERVER.COM:PORT>')
@@ -57,11 +63,11 @@ select py_pgmail(
 	'/foo/bar/',
     	'smtp.gmail.com:587');
 ```
-Make sure you replace ```<USERNAME>``` ```<PASSWORD>``` and ```<MAIL.MYSERVER.COM:PORT>``` by the your email server config values.
+Make sure you replace ```<USERNAME>``` ```<PASSWORD>``` and ```<MAIL.MYSERVER.COM:PORT>``` with your email server config values.
 
 
 
-If you plan to send emails using __gmail__ make sure you [allow less secure apps into your account](https://support.google.com/accounts/answer/6010255?hl=en)
+If you plan to send emails using __gmail__ note that Google no longer supports "less secure apps". Instead, enable 2-Step Verification on your Google account and create an [app password](https://support.google.com/accounts/answer/185833), then use that app password as ```<PASSWORD>```.
   
 You can use this function to send emails with __cc__ and __bcc__.
 
